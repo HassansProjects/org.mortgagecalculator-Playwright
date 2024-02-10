@@ -50,7 +50,7 @@ test('Verify user can click on Mortgage calc and calculate the mortgage', async 
         await expect("(//table[@class='sortable']//strong)[2]").toBeVisible
         await page.locator("input[value='Calculate']").click
 
-        // Showing the monthly mortgage . here is we use "element" and not "input" we use "input" when its a field and
+        // Showing the monthly mortgage . here we use "element" and not "input" we use "input" when its a field and
         // "element" when its a text.
         // and we need to use "textContant" instead of using "value"
         // here the example for "input" + "value" we used in line 21"
