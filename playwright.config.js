@@ -22,6 +22,7 @@ module.exports = defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -31,32 +32,47 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
   },
 
+
+
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+       // headless: false,
+        viewport: { width: 1912, height: 924  },
+        
+      },
     },
 
-  //  {
-  //    name: 'firefox',
-  //    use: { ...devices['Desktop Firefox'] },
-  //  },
+    
+      {
+        name: 'firefox',
+        use: {
+           ...devices['Desktop Firefox'],
+           viewport: { width: 1912, height: 924  },
+          },
+      },
 
-  //  {
-  //    name: 'webkit',
-  //    use: { ...devices['Desktop Safari'] },
-  //  },
+
+      {
+        name: 'webkit',
+        use: { 
+          ...devices['Desktop Safari'],
+          viewport: { width: 1912, height: 924  },
+         },
+      },
 
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
     // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+    {
+      name: 'Mobile Safari',
+     use: { ...devices['iPhone 14'] },
+    },
 
     /* Test against branded browsers. */
     // {
